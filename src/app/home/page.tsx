@@ -19,7 +19,7 @@ export default function HomePage() {
     });
   }, []);
 
-  const categories = [...new Set(lots.map((l) => l.category))];
+  const categories = Array.from(new Set(lots.map((l) => l.category)));
   const filtered = activeCategory === 'Barchasi' ? lots : lots.filter(l => l.category === activeCategory);
   const displayLots = filtered.slice(0, 18);
 
