@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { NextRequest, NextResponse } from 'next/server';
 import { dbGetLot, dbUpdateLot, dbDeleteLot, dbToggleActive } from '@/lib/db';
 
