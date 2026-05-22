@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
-import { Package, Plus, LogOut, Zap, Menu, X } from 'lucide-react';
+import { Package, Plus, LogOut, Zap, Menu, X, BarChart2 } from 'lucide-react';
 import { adminLogout } from '@/lib/api';
 
 export default function AdminSidebar() {
@@ -18,6 +18,7 @@ export default function AdminSidebar() {
   const navItems = [
     { href: '/admin/lots', icon: <Package size={16} />, label: 'Lotlar' },
     { href: '/admin/lot-new', icon: <Plus size={16} />, label: 'Yangi lot' },
+    { href: '/admin/stats', icon: <BarChart2 size={16} />, label: 'Statistika' },
   ];
 
   const SidebarContent = () => (
