@@ -1,0 +1,10 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/lots/route": "app/api/lots/route.js",
+  "/page": "app/page.js",
+  "/api/stats/route": "app/api/stats/route.js",
+  "/home/page": "app/home/page.js",
+  "/admin/login/page": "app/admin/login/page.js",
+  "/admin/lots/page": "app/admin/lots/page.js",
+  "/admin/lot-new/page": "app/admin/lot-new/page.js"
+}
