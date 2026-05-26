@@ -2,9 +2,36 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'INNOSTEP Shop — Premium Mahsulotlar',
-  description: 'Eng sifatli mahsulotlar katalogi. Lotlar, narxlar, xarakteristikalar.',
-  keywords: 'innostep, shop, lot, mahsulot, elektron, smartphone',
+  title: {
+    default: 'INNOSTEP Shop — Premium Mahsulotlar',
+    template: '%s | INNOSTEP Shop',
+  },
+  description: "O'zbekistondagi eng sifatli mahsulotlar katalogi. Elektronika, maishiy texnika, va boshqa tovarlar eng qulay narxlarda.",
+  keywords: ['innostep', 'shop', 'mahsulot', 'lot', 'elektron', 'smartphone', 'uzbekistan', 'online shop'],
+  authors: [{ name: 'INNOSTEP' }],
+  creator: 'INNOSTEP',
+  publisher: 'INNOSTEP',
+  metadataBase: new URL('https://innostep-shop.vercel.app'),
+  openGraph: {
+    type: 'website',
+    locale: 'uz_UZ',
+    url: 'https://innostep-shop.vercel.app',
+    siteName: 'INNOSTEP Shop',
+    title: 'INNOSTEP Shop — Premium Mahsulotlar',
+    description: "O'zbekistondagi eng sifatli mahsulotlar katalogi.",
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'INNOSTEP Shop' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'INNOSTEP Shop — Premium Mahsulotlar',
+    description: "O'zbekistondagi eng sifatli mahsulotlar katalogi.",
+    images: ['/og-image.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
