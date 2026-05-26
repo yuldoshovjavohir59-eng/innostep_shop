@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   creator: 'INNOSTEP',
   publisher: 'INNOSTEP',
   metadataBase: new URL('https://innostep-shop.vercel.app'),
+  verification: {
+    google: 'izfNqenMxc_YfhCb3axvr8Klx7upQ6WZvUnkZ2e1Qfs',
+  },
   openGraph: {
     type: 'website',
     locale: 'uz_UZ',
