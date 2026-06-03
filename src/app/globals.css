@@ -150,7 +150,7 @@ body {
 
 /* ===== INPUT ===== */
 .input {
-  background: #ffffff;
+  background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   color: var(--text);
@@ -196,7 +196,7 @@ body {
   justify-content: center;
 }
 [data-theme="light"] .lot-img-wrap {
-  background: #ffffff;
+  background: var(--bg-elevated);
 }
 .lot-img-wrap img {
   width: 100%;
@@ -243,7 +243,7 @@ body {
 
 /* ===== THEME TOGGLE BUTTON ===== */
 .theme-toggle {
-  background: #ffffff;
+  background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: 20px;
   padding: 6px 10px;
