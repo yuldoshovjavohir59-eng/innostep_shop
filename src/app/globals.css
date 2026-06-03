@@ -189,14 +189,14 @@ body {
   aspect-ratio: 4/3;
   overflow: hidden;
   border-radius: 10px 10px 0 0;
-  background: #f0f0f5;
+  background: var(--bg-elevated);
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 [data-theme="light"] .lot-img-wrap {
-  background: #e8e8f0;
+  background: #f0f0f5;
 }
 .lot-img-wrap img {
   width: 100%;
