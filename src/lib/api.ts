@@ -98,3 +98,16 @@ export function isAdminLoggedIn(): boolean {
   if (typeof window === 'undefined') return false;
   return localStorage.getItem(AUTH_KEY) === '1';
 }
+
+// ---- IMAGE UPLOAD ----
+export async function apiUploadImage(file: File): Promise<string | null> {
+  const formData = new FormData();
+  formData.append('file', file);
+  const res = await fetch('/api/upload', {
+    method: 'POST',
+    body: formData,
+  });
+  if (!res.ok) return null;
+  const data = await res.json();
+  return data.url;
+}
