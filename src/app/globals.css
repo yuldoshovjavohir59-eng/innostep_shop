@@ -150,7 +150,7 @@ body {
 
 /* ===== INPUT ===== */
 .input {
-  background: var(--bg-elevated);
+  background: #e8e8f0;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   color: var(--text);
@@ -189,14 +189,14 @@ body {
   aspect-ratio: 4/3;
   overflow: hidden;
   border-radius: 10px 10px 0 0;
-  background: var(--bg-elevated);
+  background: #e8e8f0;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 [data-theme="light"] .lot-img-wrap {
-  background: #f0f0f5;
+  background: #e8e8f0;
 }
 .lot-img-wrap img {
   width: 100%;
@@ -243,7 +243,7 @@ body {
 
 /* ===== THEME TOGGLE BUTTON ===== */
 .theme-toggle {
-  background: var(--bg-elevated);
+  background: #e8e8f0;
   border: 1px solid var(--border);
   border-radius: 20px;
   padding: 6px 10px;

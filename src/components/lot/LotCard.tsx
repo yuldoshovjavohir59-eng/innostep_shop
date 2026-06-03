@@ -12,7 +12,7 @@ export default function LotCard({ lot }: { lot: Lot }) {
       <div className="card" style={{ overflow: 'hidden', cursor: 'pointer', width: '100%', display: 'flex', flexDirection: 'column' }}>
         <div className="lot-img-wrap">
           {lot.images[0] ? (
-            <img src={lot.images[0]} alt={lot.title} loading="lazy" style={{ objectFit: 'contain', background: 'white', borderRadius: 0 }} />
+            <img src={lot.images[0]} alt={lot.title} loading="lazy" />
           ) : (
             <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Package size={40} color="var(--text-dim)" />
