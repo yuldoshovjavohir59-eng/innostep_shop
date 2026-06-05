@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
 import Navbar from '@/components/layout/Navbar';
@@ -13,6 +13,7 @@ function LotsContent() {
   const [search, setSearch] = useState(searchParams.get('q') || '');
   const [activeCategory, setActiveCategory] = useState('Barchasi');
   const [sort, setSort] = useState('new');
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     apiGetLots().then(all => setAllLots(all.filter(l => l.isActive)));
@@ -45,14 +46,15 @@ function LotsContent() {
     <>
       <Navbar />
       <main style={{ maxWidth: 1280, margin: '0 auto', padding: '40px 24px' }}>
-        <div style={{ marginBottom: 36 }}>
+        <div style={{ marginBottom: 28 }}>
           <h1 className="font-display" style={{ fontSize: 36, fontWeight: 700, marginBottom: 8 }}>
             Barcha <span className="gradient-text">lotlar</span>
           </h1>
           <p style={{ color: 'var(--text-muted)', fontSize: 15 }}>Jami {lots.length} ta mahsulot</p>
         </div>
 
-        <div style={{ display: 'flex', gap: 12, marginBottom: 32, alignItems: 'center', flexWrap: 'wrap' }}>
+        {/* Search + Sort */}
+        <div style={{ display: 'flex', gap: 12, marginBottom: 20, alignItems: 'center', flexWrap: 'wrap' }}>
           <input
             className="input"
             placeholder="🔍  Mahsulot qidirish..."
@@ -60,18 +62,6 @@ function LotsContent() {
             onChange={e => setSearch(e.target.value)}
             style={{ maxWidth: 320, height: 42 }}
           />
-          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-            {categories.map((cat) => (
-              <button key={cat} onClick={() => setActiveCategory(cat)} style={{
-                background: activeCategory === cat ? 'var(--accent)' : 'var(--bg-elevated)',
-                border: '1px solid ' + (activeCategory === cat ? 'var(--accent)' : 'var(--border)'),
-                borderRadius: 20, padding: '8px 16px',
-                color: activeCategory === cat ? 'white' : 'var(--text-muted)',
-                fontSize: 13, fontWeight: 500, cursor: 'pointer',
-                fontFamily: "'Manrope', sans-serif", transition: 'all 0.2s',
-              }}>{cat}</button>
-            ))}
-          </div>
           <select value={sort} onChange={e => setSort(e.target.value)} style={{
             background: 'var(--bg-elevated)', border: '1px solid var(--border)', borderRadius: 8,
             color: 'var(--text-muted)', padding: '8px 12px', fontSize: 13, cursor: 'pointer',
@@ -83,6 +73,33 @@ function LotsContent() {
           </select>
         </div>
 
+        {/* Categories horizontal scroll */}
+        <div style={{ position: 'relative', marginBottom: 28 }}>
+          <div ref={scrollRef} style={{
+            display: 'flex', gap: 8, overflowX: 'auto', paddingBottom: 8,
+            scrollbarWidth: 'none', msOverflowStyle: 'none',
+          }}>
+            {categories.map((cat) => (
+              <button key={cat} onClick={() => setActiveCategory(cat)} style={{
+                background: activeCategory === cat ? 'var(--accent)' : 'var(--bg-elevated)',
+                border: '1px solid ' + (activeCategory === cat ? 'var(--accent)' : 'var(--border)'),
+                borderRadius: 20, padding: '8px 18px',
+                color: activeCategory === cat ? 'white' : 'var(--text-muted)',
+                fontSize: 13, fontWeight: 500, cursor: 'pointer',
+                fontFamily: "'Manrope', sans-serif", transition: 'all 0.2s',
+                whiteSpace: 'nowrap', flexShrink: 0,
+              }}>{cat}</button>
+            ))}
+          </div>
+          {/* Fade effect on right */}
+          <div style={{
+            position: 'absolute', right: 0, top: 0, bottom: 8,
+            width: 60, background: 'linear-gradient(to right, transparent, var(--bg))',
+            pointerEvents: 'none',
+          }} />
+        </div>
+
+        {/* Lots grid */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 16, alignItems: 'stretch' }}>
           {lots.map((lot) => <LotCard key={lot.id} lot={lot} />)}
         </div>
@@ -93,6 +110,9 @@ function LotsContent() {
           </div>
         )}
       </main>
+      <style>{`
+        div::-webkit-scrollbar { display: none; }
+      `}</style>
     </>
   );
 }
